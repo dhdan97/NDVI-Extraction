@@ -13,11 +13,16 @@ public class ExtractNDVI {
 	public static void main(String[] args) throws IOException {
 		Scanner input = new Scanner(System.in);
 		
+                String dhdan_path;
+                String dhdan_dst;
+                String hpuma_path = "C:\\Users\\pumah\\Desktop\\US_eMTH_NDVI.2000.056-062.QKM.COMPRES.005.2009221053420";
+                String hpuma_dst =  "C:\\Users\\pumah\\Desktop\\Dump_Folder";
+                
 		System.out.println("Please enter directory:");
-		Path path = Paths.get(input.nextLine());
+		Path path = Paths.get(hpuma_path);
 		
 		//System.out.println("Please enter destination:");
-		Path dst = Paths.get("F:\\FellowshipWork-Daniel.h\\NDVI Data\\2000\\RenamedData").toAbsolutePath();
+		Path dst = Paths.get(hpuma_dst).toAbsolutePath();
 		
 		if(Files.exists(path) && Files.isDirectory(path) && Files.exists(dst) && Files.isDirectory(dst)) {
 			System.out.printf("%nDirectory Contents:%n");
