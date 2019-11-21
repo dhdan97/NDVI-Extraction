@@ -45,35 +45,42 @@ public class ExtractNDVI {
 				DirectoryStream<Path> directoryStream2 = Files.newDirectoryStream(dst);
 				for(Path p : directoryStream2) {
 					
-					System.out.println(p.getFileName().toString());
-					NDVI n1 = new NDVI(p.getFileName().toString());
-					System.out.println("Data Range: Days " + n1.getBeginDay() + "-" + n1.getEndDay());
-					System.out.println("Year: " + n1.getYear());
+					if(p.getFileName().toString().contains("US")) {
+						System.out.println(p.getFileName().toString());
+						NDVI n1 = new NDVI(p.getFileName().toString());
+						System.out.println("Data Range: Days " + n1.getBeginDay() + "-" + n1.getEndDay());
+						System.out.println("Year: " + n1.getYear());
 					
-					if(p.getFileName().toString().contains(".met")) {
-						//System.out.println(file.getDayRange());
-						File f1 = new File(p.toString() + n1.getYear() + "0" + (n1.getBeginDay()/7) + ".met");
-						p.toFile().renameTo(f1);
-					}
-					if(p.getFileName().toString().contains(".tif.xml")) {
-						//System.out.println(file.getDayRange());
-						File f1 = new File(p.toString() + n1.getYear() + "0" + (n1.getBeginDay()/7) + ".tif.xml");
-						p.toFile().renameTo(f1);
-					}
-					if(p.getFileName().toString().contains(".tif") && !p.getFileName().toString().contains(".xml") && !p.getFileName().toString().contains(".ovr")) {
-						//System.out.println(p);
-						File f1 = new File(p.toString() + n1.getYear() + "0" + (n1.getBeginDay()/7) + ".tif");
-						p.toFile().renameTo(f1);
-					}
-					if(p.getFileName().toString().contains(".tif.aux.xml")) {
-						//System.out.println(p);
-						File f1 = new File(p.toString() + n1.getYear() + "0" + (n1.getBeginDay()/7)+ ".tif.aux.xml");
-						p.toFile().renameTo(f1);
-					}
-					if(p.getFileName().toString().contains(".tif.ovr")) {
-						//System.out.println(p);
-						File f1 = new File(p.toString() + n1.getYear() + "0" + (n1.getBeginDay()/7)+ ".tif.ovr");
-						p.toFile().renameTo(f1);
+					
+					
+						//have to put if (contains US) to not fuck with already renamed files
+						if(p.getFileName().toString().contains(".met") && p.getFileName().toString().contains("US")) {
+							//System.out.println(file.getDayRange());
+							//File f0 = new File(dst.toString());
+							File f1 = new File(p.toString().replace(p.getFileName().toString(), "") + n1.getYear() + "0" + (n1.getBeginDay()/7) + ".met");
+							//f0.renameTo(f1);
+							p.toFile().renameTo(f1);
+						}
+						if(p.getFileName().toString().contains(".tif.xml") && p.getFileName().toString().contains("US")) {
+							//System.out.println(file.getDayRange());
+							File f1 = new File(p.toString().replace(p.getFileName().toString(), "") + n1.getYear() + "0" + (n1.getBeginDay()/7) + ".tif.xml");
+							p.toFile().renameTo(f1);
+						}
+						if(p.getFileName().toString().contains(".tif") && !p.getFileName().toString().contains(".xml") && !p.getFileName().toString().contains(".ovr") && p.getFileName().toString().contains("US")) {
+							//System.out.println(p);
+							File f1 = new File(p.toString().replace(p.getFileName().toString(), "") + n1.getYear() + "0" + (n1.getBeginDay()/7) + ".tif");
+							p.toFile().renameTo(f1);
+						}
+						if(p.getFileName().toString().contains(".tif.aux.xml") && p.getFileName().toString().contains("US")) {
+							//System.out.println(p);
+							File f1 = new File(p.toString().replace(p.getFileName().toString(), "") + n1.getYear() + "0" + (n1.getBeginDay()/7)+ ".tif.aux.xml");
+							p.toFile().renameTo(f1);
+						}
+						if(p.getFileName().toString().contains(".tif.ovr") && p.getFileName().toString().contains("US")) {
+							//System.out.println(p);
+							File f1 = new File(p.toString().replace(p.getFileName().toString(), "") + n1.getYear() + "0" + (n1.getBeginDay()/7)+ ".tif.ovr");
+							p.toFile().renameTo(f1);
+						}
 					}
 				}
 			}
