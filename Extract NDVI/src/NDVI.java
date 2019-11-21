@@ -26,7 +26,6 @@ public class NDVI {
 //		}
 //		
 //	}
-	
 	public int getMonth() {
 		return month;
 	}
