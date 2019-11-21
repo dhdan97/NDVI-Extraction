@@ -50,31 +50,31 @@ public class ExtractNDVI {
 					System.out.println("Data Range: Days " + n1.getBeginDay() + "-" + n1.getEndDay());
 					System.out.println("Year: " + n1.getYear());
 					
-					/*if(p.getFileName().toString().contains(".met")) {
+					if(p.getFileName().toString().contains(".met")) {
 						//System.out.println(file.getDayRange());
-						File f1 = new File(n1.getYear() + (n1.getBeginDay()/7) + ".met");
+						File f1 = new File(p.toString() + n1.getYear() + "0" + (n1.getBeginDay()/7) + ".met");
 						p.toFile().renameTo(f1);
 					}
 					if(p.getFileName().toString().contains(".tif.xml")) {
 						//System.out.println(file.getDayRange());
-						File f1 = new File(n1.getYear() + (n1.getBeginDay()/7) + ".tif.xml");
+						File f1 = new File(p.toString() + n1.getYear() + "0" + (n1.getBeginDay()/7) + ".tif.xml");
 						p.toFile().renameTo(f1);
 					}
-					if(p.getFileName().toString().contains(".tif") && !p.toString().contains(".xml") && !p.toString().contains(".ovr")) {
+					if(p.getFileName().toString().contains(".tif") && !p.getFileName().toString().contains(".xml") && !p.getFileName().toString().contains(".ovr")) {
 						//System.out.println(p);
-						File f1 = new File(n1.getYear() + (n1.getBeginDay()/7) + ".tif");
+						File f1 = new File(p.toString() + n1.getYear() + "0" + (n1.getBeginDay()/7) + ".tif");
 						p.toFile().renameTo(f1);
 					}
 					if(p.getFileName().toString().contains(".tif.aux.xml")) {
 						//System.out.println(p);
-						File f1 = new File(n1.getYear() + (n1.getBeginDay()/7)+ ".tif.aux.xml");
+						File f1 = new File(p.toString() + n1.getYear() + "0" + (n1.getBeginDay()/7)+ ".tif.aux.xml");
 						p.toFile().renameTo(f1);
 					}
 					if(p.getFileName().toString().contains(".tif.ovr")) {
 						//System.out.println(p);
-						File f1 = new File(n1.getYear() + (n1.getBeginDay()/7)+ ".tif.ovr");
+						File f1 = new File(p.toString() + n1.getYear() + "0" + (n1.getBeginDay()/7)+ ".tif.ovr");
 						p.toFile().renameTo(f1);
-					}*/
+					}
 				}
 			}
 			
