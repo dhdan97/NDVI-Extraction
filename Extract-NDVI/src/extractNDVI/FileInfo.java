@@ -1,11 +1,24 @@
 package extractNDVI;
 
 public class FileInfo {
+	public static void main(String[] args) {
+		FileInfo test = new FileInfo("US_eMTH_NDVI.2000.070-076.QKM.VI_ACQI.005.2009220150303.tif");
+		System.out.println(test.getYear());
+		System.out.println(test.getStartDay());
+		System.out.println(test.getEndDay());
+		System.out.println(test.getExtension());
+		System.out.println(test.calcMonth());
+	}
 	private int year;
 	private int startDay;
 	private int endDay;
-	String extension;
-
+	private String extension;
+	FileInfo(){
+		year = 0;
+		startDay = 0;
+		endDay = 0;
+		extension = "";
+	}
 	FileInfo(String fileName){
 		year = Integer.parseInt(fileName.substring(13, 17));
 		startDay = Integer.parseInt(fileName.substring(18, 21));
@@ -25,14 +38,16 @@ public class FileInfo {
 	public String getExtension() {
 		return extension;
 	}
-	public int calcMonth(int startDay, int year){
-		boolean isLeapYear = false;
+	public int calcMonth(){
 		if(year%4 == 0 && year%400 == 0){
-			isLeapYear = true;
+			startDay--;
 		}
-
-
-
-		return 0;
+		int month[]= {0,31,28,31,30,31,30,31,31,30,31,30,31};
+		int monthLength = month.length-1;
+		int i = 0;
+		while(startDay > month[i] && i < monthLength){
+			i++;
+		}
+		return i;
 	}
 }
