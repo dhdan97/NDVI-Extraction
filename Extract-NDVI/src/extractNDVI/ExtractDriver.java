@@ -16,6 +16,7 @@ public class ExtractDriver {
 	public static void main(String[] args) throws IOException {
 		
 		Scanner input = new Scanner(System.in);
+		String hpumasrc = "C:\\Users\\pumah\\Desktop\\Src_Folder";
 		//Acquire directory; better not to hard code this since I will be creating my own sample directories
 		System.out.println("Please enter directory:");
 		Path path = Paths.get(input.nextLine());
@@ -23,8 +24,8 @@ public class ExtractDriver {
 		
 		//have Henry insert his own path and change the string
 		String dhdanPath = "F:\\FellowshipWork-Daniel.h\\NDVI Data\\2000\\RenamedData";
-		String hpumaPath;
-		Path dst = Paths.get(dhdanPath).toAbsolutePath();
+		String hpumaPath = "C:\\Users\\pumah\\Desktop\\Dump_Folder";
+		Path dst = Paths.get(hpumaPath).toAbsolutePath();
 		
 		//if valid extraction directory and valid output directory
 		if(Files.exists(path) && Files.isDirectory(path) && Files.exists(dst) && Files.isDirectory(dst)) {
