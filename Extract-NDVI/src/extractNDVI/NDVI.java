@@ -33,25 +33,25 @@ public class NDVI {
 				
 				//if .met file
 				if(p.getFileName().toString().contains(".met")) {
-					File f1 = new File(p.toString().replace(p.getFileName().toString(), "") + n1.getYear() + "0" + (n1.getStartDay()/7) + ".met");
+					File f1 = new File(p.toString().replace(p.getFileName().toString(), "") + n1.getYear() + n1.calcMonth() + (n1.getStartDay()/7) + ".met");
 					p.toFile().renameTo(f1);
 				}
 				//if .tif.xml
 				if(p.getFileName().toString().contains(".tif.xml")) {
-					File f1 = new File(p.toString().replace(p.getFileName().toString(), "") + n1.getYear() + "0" + (n1.getStartDay()/7) + ".tif.xml");
+					File f1 = new File(p.toString().replace(p.getFileName().toString(), "") + n1.getYear() + n1.calcMonth() + (n1.getStartDay()/7) + ".tif.xml");
 					p.toFile().renameTo(f1);
 				}
 				//if .tif
 				if(p.getFileName().toString().contains(".tif") && !p.getFileName().toString().contains(".xml") && !p.getFileName().toString().contains(".ovr")) {
-					File f1 = new File(p.toString().replace(p.getFileName().toString(), "") + n1.getYear() + "0" + (n1.getStartDay()/7) + ".tif");
+					File f1 = new File(p.toString().replace(p.getFileName().toString(), "") + n1.getYear() + n1.calcMonth() + (n1.getStartDay()/7) + ".tif");
 					p.toFile().renameTo(f1);
 				}
 				if(p.getFileName().toString().contains(".tif.aux.xml")) {
-					File f1 = new File(p.toString().replace(p.getFileName().toString(), "") + n1.getYear() + "0" + (n1.getStartDay()/7)+ ".tif.aux.xml");
+					File f1 = new File(p.toString().replace(p.getFileName().toString(), "") + n1.getYear() + n1.calcMonth() + (n1.getStartDay()/7)+ ".tif.aux.xml");
 					p.toFile().renameTo(f1);
 				}
 				if(p.getFileName().toString().contains(".tif.ovr") && p.getFileName().toString().contains("US")) {
-					File f1 = new File(p.toString().replace(p.getFileName().toString(), "") + n1.getYear() + "0" + (n1.getStartDay()/7)+ ".tif.ovr");
+					File f1 = new File(p.toString().replace(p.getFileName().toString(), "") + n1.getYear() + n1.calcMonth() + (n1.getStartDay()/7)+ ".tif.ovr");
 					p.toFile().renameTo(f1);
 				}	
 			}
