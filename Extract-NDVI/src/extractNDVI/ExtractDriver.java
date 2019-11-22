@@ -17,14 +17,16 @@ public class ExtractDriver {
 		
 		Scanner input = new Scanner(System.in);
 		//Acquire directory; better not to hard code this since I will be creating my own sample directories
+		String hpumaPath = "C:\\Users\\pumah\\Desktop\\Src_Folder";
+		String hpumaDst = "C:\\Users\\pumah\\Desktop\\Dump_Folder";
 		System.out.println("Please enter directory:");
-		Path path = Paths.get(input.nextLine());
+		Path path = Paths.get(hpumaPath);
 		input.close();
 		
 		//have Henry insert his own path and change the string
 		String dhdanPath = "F:\\FellowshipWork-Daniel.h\\NDVI Data\\2000\\RenamedData";
-		String hpumaPath;
-		Path dst = Paths.get(dhdanPath).toAbsolutePath();
+
+		Path dst = Paths.get(hpumaDst).toAbsolutePath();
 		
 		//if valid extraction directory and valid output directory
 		if(Files.exists(path) && Files.isDirectory(path) && Files.exists(dst) && Files.isDirectory(dst)) {

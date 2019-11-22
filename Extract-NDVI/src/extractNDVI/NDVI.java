@@ -1,10 +1,10 @@
 package extractNDVI;
 
+import org.apache.commons.io.FileUtils;
+
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
-
-import org.apache.commons.io.FileUtils;
 
 public class NDVI {
 
