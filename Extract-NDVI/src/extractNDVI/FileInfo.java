@@ -9,6 +9,7 @@ public class FileInfo {
 		System.out.println(test.getExtension());
 		System.out.println(test.calcMonth());
 	}
+	private static final int month[]= {31,28,31,30,31,30,31,31,30,31,30,31};
 	private int year;
 	private int startDay;
 	private int endDay;
@@ -39,14 +40,20 @@ public class FileInfo {
 		return extension;
 	}
 	public int calcMonth(){
+		if(startDay == 0){
+			return  1;
+		}
+		// Index of the current month
+		int i = 0;
+		// Sum of the months gone by
+		int daySum = 0;
+		int monthLength = month.length;
+		// Checking if we are in a leap year, if so then we roll a day back because we have an extra day
 		if(year%4 == 0 && year%400 == 0){
 			startDay--;
 		}
-		int month[]= {0,31,28,31,30,31,30,31,31,30,31,30,31};
-		int monthLength = month.length-1;
-		int i = 0;
-		while(startDay > month[i] && i < monthLength){
-			i++;
+		while(startDay > daySum && i < monthLength){
+			daySum+=month[i++];
 		}
 		return i;
 	}
