@@ -17,16 +17,14 @@ public class ExtractDriver {
 		
 		Scanner input = new Scanner(System.in);
 		//Acquire directory; better not to hard code this since I will be creating my own sample directories
-		String hpumaPath = "C:\\Users\\pumah\\Desktop\\Src_Folder";
-		String hpumaDst = "C:\\Users\\pumah\\Desktop\\Dump_Folder";
 		System.out.println("Please enter directory:");
-		Path path = Paths.get(hpumaPath);
+		Path path = Paths.get(input.nextLine());
 		input.close();
 		
 		//have Henry insert his own path and change the string
 		String dhdanPath = "F:\\FellowshipWork-Daniel.h\\NDVI Data\\2000\\RenamedData";
-
-		Path dst = Paths.get(hpumaDst).toAbsolutePath();
+		String hpumaPath;
+		Path dst = Paths.get(dhdanPath).toAbsolutePath();
 		
 		//if valid extraction directory and valid output directory
 		if(Files.exists(path) && Files.isDirectory(path) && Files.exists(dst) && Files.isDirectory(dst)) {
@@ -36,12 +34,13 @@ public class ExtractDriver {
 			DirectoryStream<Path> mainStream = Files.newDirectoryStream(path);
 			for(Path i : mainStream) {
 				System.out.println(i.getFileName());
+				NDVI.moveToDirectory(i, dst);
 				
-				//for every folder inside the extraction directory
-				DirectoryStream<Path> innerStream = Files.newDirectoryStream(i);
-				for(Path j : innerStream) {
-					System.out.println("	" + j.getFileName());
-				}
+				//for every file inside the extraction directory
+//				DirectoryStream<Path> innerStream = Files.newDirectoryStream(i);
+//				for(Path j : innerStream) {
+//					System.out.println("	" + j.getFileName());
+//				}
 			}
 		}
 	}
