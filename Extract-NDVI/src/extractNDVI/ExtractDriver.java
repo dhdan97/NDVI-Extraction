@@ -34,7 +34,7 @@ public class ExtractDriver {
 			DirectoryStream<Path> mainStream = Files.newDirectoryStream(path);
 			for(Path i : mainStream) {
 				System.out.println(i.getFileName());
-//				NDVI.moveToDirectory(i, dst);
+				NDVI.moveToDirectory(i, dst);
 				
 //				for every file inside the output directory
 //				DirectoryStream<Path> innerStream = Files.newDirectoryStream(dst);
