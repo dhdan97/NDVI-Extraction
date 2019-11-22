@@ -1,14 +1,14 @@
 package extractNDVI;
 
 public class FileInfo {
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		FileInfo test = new FileInfo("US_eMTH_NDVI.2000.070-076.QKM.VI_ACQI.005.2009220150303.tif");
 		System.out.println(test.getYear());
 		System.out.println(test.getStartDay());
 		System.out.println(test.getEndDay());
 		System.out.println(test.getExtension());
 		System.out.println(test.calcMonth());
-	}
+	}*/
 	private static final int month[]= {31,28,31,30,31,30,31,31,30,31,30,31};
 	private int year;
 	private int startDay;
@@ -39,9 +39,9 @@ public class FileInfo {
 	public String getExtension() {
 		return extension;
 	}
-	public int calcMonth(){
+	public String calcMonth(){
 		if(startDay == 0){
-			return  1;
+			return  "1";
 		}
 		// Index of the current month
 		int i = 0;
@@ -55,6 +55,10 @@ public class FileInfo {
 		while(startDay > daySum && i < monthLength){
 			daySum+=month[i++];
 		}
-		return i;
+		
+		if(i >= 1 && i <= 9)
+			return "0" + i;
+		
+		return Integer.toString(i);
 	}
 }
